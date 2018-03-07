@@ -3,6 +3,7 @@ namespace Torakel\DatabaseBundle\Tests;
 
 use Torakel\DatabaseBundle\Entity\City as City;
 use PHPUnit\Framework\TestCase;
+use Torakel\DatabaseBundle\Entity\Country as Country;
 
 class CityTest extends TestCase {
 
@@ -48,7 +49,7 @@ class CityTest extends TestCase {
         $this->object->addAltName($additionalAltName);
         $this->assertEquals($altNames, $this->object->getAltNames());
 
-        $countryMock = $this->getMockBuilder(City::class)->getMock();
+        $countryMock = $this->getMockBuilder(Country::class)->getMock();
         $this->object->setCountry($countryMock);
         $this->assertEquals($countryMock, $this->object->getCountry());
 
