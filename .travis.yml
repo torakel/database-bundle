@@ -8,3 +8,6 @@ php:
 
 install:
   - composer install
+  - ./vendor/bin/simple-phpunit install
+
+script: ./vendor/bin/simple-phpunit -v --coverage-text
