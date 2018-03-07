@@ -2,8 +2,9 @@
 namespace Torakel\DatabaseBundle\Tests;
 
 use Torakel\DatabaseBundle\Entity\City as City;
+use PHPUnit\Framework\TestCase;
 
-class CityTest extends \PHPUnit_Framework_TestCase {
+class CityTest extends TestCase {
 
     /**
      * @var City
@@ -19,6 +20,9 @@ class CityTest extends \PHPUnit_Framework_TestCase {
         $this->object = new City();
     }
 
+    /**
+     * Tests the getters and setters for the City entity.
+     */
     public function testGetterAndSetter() {
 
         $this->assertNull($this->object->getId());
