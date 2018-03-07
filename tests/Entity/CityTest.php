@@ -33,6 +33,21 @@ class CityTest extends \PHPUnit_Framework_TestCase {
         $this->object->setName($name);
         $this->assertEquals($name, $this->object->getName());
 
+        $altNames = array(
+            'altname1',
+            'altname2'
+        );
+        $this->object->setAltNames($altNames);
+        $this->assertEquals($altNames, $this->object->getAltNames());
+        $additionalAltName = 'altname3';
+        $altNames[] = $additionalAltName;
+        $this->object->addAltName($additionalAltName);
+        $this->assertEquals($altNames, $this->object->getAltNames());
+
+        $countryMock = $this->getMockBuilder(City::class)->getMock();
+        $this->object->setCountry($countryMock);
+        $this->assertEquals($countryMock, $this->object->getCountry());
+
         $date = new \DateTime();
 
         $this->object->setCreatedAt($date);
