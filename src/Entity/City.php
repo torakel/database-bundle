@@ -75,6 +75,7 @@ class City
     protected $updatedAt;
 
     public function __construct() {
+        $this->clubs = new ArrayCollection();
         $this->grounds = new ArrayCollection();
         $this->referees = new ArrayCollection();
     }
