@@ -25,10 +25,10 @@
   },
   "autoload": {
     "psr-4": {
-      "Torakel\\DatabaseBundle\\": "/src/"
+      "Torakel\\DatabaseBundle\\": "./src/"
     }
   },
   "autoload-dev": {
-    "psr-4": { "Torakel\\DatabaseBundle\\Tests\\": "/tests/" }
+    "psr-4": { "Torakel\\DatabaseBundle\\Tests\\": "./tests/" }
   }
 }
