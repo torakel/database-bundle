@@ -31,7 +31,7 @@ class CityTest extends \PHPUnit_Framework_TestCase {
         $name = 'name1';
 
         $this->object->setName($name);
-        $this->assertEquals($name);
+        $this->assertEquals($name, $this->object->getName());
 
         $date = new \DateTime();
 
