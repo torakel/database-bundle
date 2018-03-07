@@ -2,6 +2,7 @@
 namespace Torakel\DatabaseBundle\Tests;
 
 use Torakel\DatabaseBundle\Entity\City as City;
+use Torakel\DatabaseBundle\Entity\Club as Club;
 use Torakel\DatabaseBundle\Entity\Country as Country;
 use Torakel\DatabaseBundle\Entity\Ground as Ground;
 use Torakel\DatabaseBundle\Entity\Referee as Referee;
@@ -41,7 +42,7 @@ class CityTest extends TestCase {
         $city = new City();
         $city->prePersist();
         $this->assertTrue(is_object($city->getCreatedAt()));
-        $this->assertTrue(array_key_exists(999999, $city->getAltNames()));
+        $this->assertTrue(array_key_exists(0, $city->getAltNames()));
         $city->preUpdate();
         $this->assertTrue(is_object($city->getUpdatedAt()));
     }
