@@ -10,4 +10,9 @@ install:
   - composer install
   - ./vendor/bin/simple-phpunit install
 
-script: ./vendor/bin/simple-phpunit -v --coverage-text
+script:
+  - mkdir -p build/logs
+  - ./vendor/bin/simple-phpunit -v --coverage-text --coverage-clover build/logs/clover.xml
+
+after_script:
+  - php vendor/bin/coveralls -v
