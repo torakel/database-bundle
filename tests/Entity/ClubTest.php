@@ -16,6 +16,9 @@ class ClubTest extends BaseTest
      */
     protected function setUp()
     {
+        /**
+         * @var Club
+         */
         $this->object = new Club();
         $this->object2 = new Club();
     }
@@ -25,6 +28,14 @@ class ClubTest extends BaseTest
      */
     public function testGetterAndSetter()
     {
+
+        $internationalName = 'intName';
+        $this->object->setInternationalName($internationalName);
+        $this->assertEquals($internationalName, $this->object->getInternationalName());
+
+        $shortName = 'shortName';
+        $this->object->setShortName($shortName);
+        $this->assertEquals($shortName, $this->object->getShortName());
 
         $cityMock = $this->getMockBuilder(City::class)->getMock();
         $this->object->setCity($cityMock);

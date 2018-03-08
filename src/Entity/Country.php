@@ -52,6 +52,12 @@ class Country
 
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection;
+     * @ORM\OneToMany(targetEntity="\Torakel\DatabaseBundle\Entity\Coach", mappedBy="nationality")
+     */
+    protected $coachs;
+
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection;
      * @ORM\OneToMany(targetEntity="\Torakel\DatabaseBundle\Entity\Referee", mappedBy="nationality")
      */
     protected $referees;
@@ -75,6 +81,7 @@ class Country
     protected $updatedAt;
 
     public function __construct() {
+        $this->coachs= new ArrayCollection();
         $this->cities= new ArrayCollection();
         $this->referees = new ArrayCollection();
     }
@@ -366,4 +373,36 @@ class Country
     {
         return $this->referees;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCoachs()
+    {
+        return $this->coachs;
+    }
+
+    /**
+     * Add coach
+     *
+     * @param \Torakel\DatabaseBundle\Entity\Coach $coach
+     *
+     * @return Country
+     */
+    public function addCoach(\Torakel\DatabaseBundle\Entity\Coach $coach)
+    {
+        $this->coachs[] = $coach;
+
+        return $this;
+    }
+    /**
+     * Remove coach
+     *
+     * @param \Torakel\DatabaseBundle\Entity\Coach $coach
+     */
+    public function removeCoach(\Torakel\DatabaseBundle\Entity\Coach $coach)
+    {
+        $this->coachs->removeElement($coach);
+    }
+
 }

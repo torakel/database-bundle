@@ -44,10 +44,17 @@ class Coach
     protected $nickname;
 
     /**
-     * @var string
-     * @ORM\Column(type="text", nullable=true)
+     * @var \Torakel\DatabaseBundle\Entity\Country
+     * @ORM\ManyToOne(targetEntity="\Torakel\DatabaseBundle\Entity\Country", inversedBy="coachs")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
      */
-    protected $alt_names;
+    protected $nationality;
+
+    /**
+     * @var string
+     * @ORM\Column(name="alt_names", type="text", nullable=true)
+     */
+    protected $altNames;
 
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection;
@@ -230,7 +237,7 @@ class Coach
      */
     public function setAltNames($altNames)
     {
-        $this->alt_names = implode('|', $altNames);
+        $this->altNames = implode('|', $altNames);
 
         return $this;
     }
@@ -242,7 +249,7 @@ class Coach
      */
     public function getAltNames()
     {
-        return explode('|', $this->alt_names);
+        return explode('|', $this->altNames);
     }
 
     /**
@@ -412,5 +419,21 @@ class Coach
     public function getCards()
     {
         return $this->cards;
+    }
+
+    /**
+     * @return Country
+     */
+    public function getNationality()
+    {
+        return $this->nationality;
+    }
+
+    /**
+     * @param Country $nationality
+     */
+    public function setNationality(\Torakel\DatabaseBundle\Entity\Country $nationality)
+    {
+        $this->nationality = $nationality;
     }
 }
