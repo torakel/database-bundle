@@ -45,10 +45,10 @@ class CoachTest extends BaseTest
         $cards = new ArrayCollection();
         $cards[] = $card1;
         $cards[] = $card2;
-        $this->object->addClub($card1);
-        $this->object->addClub($card2);
-        $this->object->addClub($card3);
-        $this->object->removeClub($card3);
+        $this->object->addCard($card1);
+        $this->object->addCard($card2);
+        $this->object->addCard($card3);
+        $this->object->removeCard($card3);
         $this->assertEquals($cards, $this->object->getCards());
 
         $homeGame1 = $this->getMockBuilder(Game::class)->getMock();
