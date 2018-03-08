@@ -26,6 +26,7 @@ class GameTest extends BaseTest
         $this->object = new Game();
         $this->object2 = new Game();
     }
+
     /**
      * Tests the general getters and setters
      */
