@@ -1,6 +1,6 @@
 <?php
 
-namespace Abenil\FootballDbBundle\DependencyInjection;
+namespace Torakel\DatabaseBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

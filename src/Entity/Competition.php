@@ -145,7 +145,7 @@ class Competition
     public function addAltName($name)
     {
         $names = $this->getAltNames();
-        if (in_array($name, $names) == false) {
+        if (in_array($name, $names) === false) {
             $names[] = $name;
             $this->setAltNames($names);
         }

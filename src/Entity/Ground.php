@@ -49,7 +49,7 @@ class Ground
      * @ORM\Column(type="string", nullable=true)
      */
     protected $address;
-    
+
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection;
      * @ORM\OneToMany(targetEntity="\Torakel\DatabaseBundle\Entity\Game", mappedBy="ground")
@@ -155,7 +155,7 @@ class Ground
     public function addAltName($name)
     {
         $names = $this->getAltNames();
-        if (in_array($name, $names) == false) {
+        if (in_array($name, $names) === false) {
             $names[] = $name;
             $this->setAltNames($names);
         }
