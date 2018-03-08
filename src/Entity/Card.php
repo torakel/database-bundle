@@ -116,7 +116,6 @@ class Card
 
     /**
      * Get minute
-     *
      */
     public function getMinute(): int
     {

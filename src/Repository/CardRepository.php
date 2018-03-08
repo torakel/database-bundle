@@ -1,5 +1,5 @@
 <?php
-namespace Torakel\DatabaseBundleBundle\Repository;
+namespace Torakel\DatabaseBundle\Repository;
 
 use Torakel\DatabaseBundleBundle\Entity\Game;
 use Torakel\DatabaseBundleBundle\Entity\Team;
