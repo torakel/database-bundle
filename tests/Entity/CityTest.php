@@ -6,15 +6,11 @@ use Torakel\DatabaseBundle\Entity\Club as Club;
 use Torakel\DatabaseBundle\Entity\Country as Country;
 use Torakel\DatabaseBundle\Entity\Ground as Ground;
 use Torakel\DatabaseBundle\Entity\Referee as Referee;
-use PHPUnit\Framework\TestCase;
+
 use Doctrine\Common\Collections\ArrayCollection;
 
-class CityTest extends TestCase {
-
-    /**
-     * @var City
-     */
-    protected $object;
+class CityTest extends Test
+{
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -23,28 +19,7 @@ class CityTest extends TestCase {
     protected function setUp()
     {
         $this->object = new City();
-    }
-
-    /**
-     * Tests the general getters and setters
-     */
-    public function testGeneralGetterAndSetter()
-    {
-
-        $this->assertNull($this->object->getId());
-
-        $date = new \DateTime();
-        $this->object->setCreatedAt($date);
-        $this->assertEquals($date, $this->object->getCreatedAt());
-        $this->object->setUpdatedAt($date);
-        $this->assertEquals($date, $this->object->getUpdatedAt());
-
-        $city = new City();
-        $city->prePersist();
-        $this->assertTrue(is_object($city->getCreatedAt()));
-        $this->assertTrue(array_key_exists(0, $city->getAltNames()));
-        $city->preUpdate();
-        $this->assertTrue(is_object($city->getUpdatedAt()));
+        $this->object2 = new City();
     }
 
     /**
@@ -52,25 +27,6 @@ class CityTest extends TestCase {
      */
     public function testGetterAndSetter()
     {
-
-        $slug = 'slug1';
-        $this->object->setSlug($slug);
-        $this->assertEquals($slug, $this->object->getSlug());
-
-        $name = 'name1';
-        $this->object->setName($name);
-        $this->assertEquals($name, $this->object->getName());
-
-        $altNames = array(
-            'altname1',
-            'altname2'
-        );
-        $this->object->setAltNames($altNames);
-        $this->assertEquals($altNames, $this->object->getAltNames());
-        $additionalAltName = 'altname3';
-        $altNames[] = $additionalAltName;
-        $this->object->addAltName($additionalAltName);
-        $this->assertEquals($altNames, $this->object->getAltNames());
 
         $countryMock = $this->getMockBuilder(Country::class)->getMock();
         $this->object->setCountry($countryMock);
