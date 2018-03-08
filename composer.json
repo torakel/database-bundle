@@ -3,6 +3,7 @@
   "type": "football-database-bundle",
   "description": "The database bundle for the Torakel project",
   "keywords": ["symfony2", "doctrine", "database", "football", "sport"],
+  "license": "MIT",
   "homepage": "https://github.com/torakel/database-bundle",
   "authors": [
     {
