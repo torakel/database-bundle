@@ -128,10 +128,8 @@ class Goal
 
     /**
      * Get minute
-     *
-     * @return integer
      */
-    public function getMinute()
+    public function getMinute():int
     {
         return $this->minute;
     }
@@ -152,10 +150,8 @@ class Goal
 
     /**
      * Get minuteExtratime
-     *
-     * @return integer
      */
-    public function getMinuteExtratime()
+    public function getMinuteExtratime():int
     {
         return $this->minuteExtratime;
     }
@@ -336,10 +332,8 @@ class Goal
 
     /**
      * Get period
-     *
-     * @return integer
      */
-    public function getPeriod()
+    public function getPeriod():int
     {
         return $this->period;
     }

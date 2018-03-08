@@ -117,9 +117,8 @@ class Card
     /**
      * Get minute
      *
-     * @return integer
      */
-    public function getMinute()
+    public function getMinute():int
     {
         return $this->minute;
     }
@@ -141,9 +140,8 @@ class Card
     /**
      * Get minuteExtratime
      *
-     * @return integer
      */
-    public function getMinuteExtratime()
+    public function getMinuteExtratime():int
     {
         return $this->minuteExtratime;
     }
@@ -300,10 +298,8 @@ class Card
 
     /**
      * Get period
-     *
-     * @return integer
      */
-    public function getPeriod()
+    public function getPeriod():int
     {
         return $this->period;
     }
