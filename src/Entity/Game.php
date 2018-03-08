@@ -191,6 +191,20 @@ class Game
     protected $updatedAt;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->resultCalculated = false;
+        $this->cards = new ArrayCollection();
+        $this->gamePlayers = new ArrayCollection();
+        $this->gamePlayerStatistics = new ArrayCollection();
+        $this->gameTeamStatistics = new ArrayCollection();
+        $this->goals = new ArrayCollection();
+        $this->substitutions = new ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return integer
@@ -558,15 +572,6 @@ class Game
     public function getAudience()
     {
         return $this->audience;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->resultCalculated = false;
-        $this->gamePlayers = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->substitutions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
