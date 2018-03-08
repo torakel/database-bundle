@@ -26,6 +26,10 @@ class CompetitionTest extends BaseTest
     public function testGetterAndSetter()
     {
 
+        $name = 'name1';
+        $this->object->setName($name);
+        $this->assertEquals($name, $this->object->getName());
+
         $continentMock = $this->getMockBuilder(Continent::class)->getMock();
         $this->object->setContinent($continentMock);
         $this->assertEquals($continentMock, $this->object->getContinent());

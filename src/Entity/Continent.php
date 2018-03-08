@@ -63,6 +63,7 @@ class Continent
 
 
     public function __construct() {
+        $this->competitions = new ArrayCollection();
         $this->countries = new ArrayCollection();
     }
 

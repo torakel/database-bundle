@@ -54,7 +54,7 @@ class Country
      * @var \Doctrine\Common\Collections\ArrayCollection;
      * @ORM\OneToMany(targetEntity="\Torakel\DatabaseBundle\Entity\Coach", mappedBy="nationality")
      */
-    protected $coachs;
+    protected $coaches;
 
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection;
@@ -377,9 +377,9 @@ class Country
     /**
      * @return ArrayCollection
      */
-    public function getCoachs()
+    public function getCoaches()
     {
-        return $this->coachs;
+        return $this->coaches;
     }
 
     /**

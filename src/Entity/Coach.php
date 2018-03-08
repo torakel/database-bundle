@@ -45,7 +45,7 @@ class Coach
 
     /**
      * @var \Torakel\DatabaseBundle\Entity\Country
-     * @ORM\ManyToOne(targetEntity="\Torakel\DatabaseBundle\Entity\Country", inversedBy="coachs")
+     * @ORM\ManyToOne(targetEntity="\Torakel\DatabaseBundle\Entity\Country", inversedBy="coaches")
      * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
      */
     protected $nationality;
