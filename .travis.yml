@@ -6,6 +6,9 @@ php:
   - 7.1
   - 7.2
 
+env:
+  - SURGE_LOGIN=nils.abegg@gmail.com
+  - SURGE_TOKEN=bef99a7c55eb0d3883fadbc9c8e1aa98
 install:
   - composer install
   - ./vendor/bin/simple-phpunit install
@@ -13,6 +16,16 @@ install:
 script:
   - mkdir -p build/logs
   - ./vendor/bin/simple-phpunit -v --coverage-text --coverage-clover build/logs/clover.xml
+  - mkdir -p build/apidoc/doc/torakel-database-bundle
+  - php vendor/sami/sami/sami.php update sami_config.php
 
 after_script:
   - php vendor/bin/php-coveralls -v
+
+deploy:
+  provider: surge
+  skip_cleanup: true
+  project: ./build/apidoc
+  domain: torakel.surge.sh
+  on:
+    php: '7.1'

@@ -13,16 +13,15 @@
   ],
   "require": {
     "php": ">=7.1",
-    "symfony/framework-bundle": "^3.4|^4.0",
-    "symfony/form": "^3.4|^4.0",
+    "symfony/config": "^3.4|^4.0",
+    "symfony/dependency-injection": "^3.4|^4.0",
     "symfony/http-kernel": "^3.4|^4.0",
     "doctrine/doctrine-bundle": "^1.8"
   },
   "require-dev": {
-    "friendsofphp/php-cs-fixer": "^2.8",
     "php-coveralls/php-coveralls": "^2.0",
-    "symfony/phpunit-bridge": "^3.4|^4.0",
-    "symfony/process": "^3.4|^4.0"
+    "sami/sami": "^4.0",
+    "symfony/phpunit-bridge": "^3.4|^4.0"
   },
   "autoload": {
     "psr-4": {
