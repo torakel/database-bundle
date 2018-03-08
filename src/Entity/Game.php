@@ -796,11 +796,11 @@ class Game
     /**
      * Set resultCalculated
      *
-     * @param \bool $resultCalculated
+     * @param bool $resultCalculated
      *
      * @return Game
      */
-    public function setResultCalculated(\bool $resultCalculated)
+    public function setResultCalculated($resultCalculated)
     {
         $this->resultCalculated = $resultCalculated;
 

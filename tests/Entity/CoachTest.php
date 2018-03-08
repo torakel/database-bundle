@@ -1,6 +1,7 @@
 <?php
 namespace Torakel\DatabaseBundle\Tests;
 
+use Torakel\DatabaseBundle\Entity\Card as Card;
 use Torakel\DatabaseBundle\Entity\Coach as Coach;
 use Torakel\DatabaseBundle\Entity\Country as Country;
 use Torakel\DatabaseBundle\Entity\Game as Game;

@@ -91,8 +91,9 @@ class Coach
      */
     public function __construct()
     {
-        $this->homeGames = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->awayGames = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->cards = new ArrayCollection();
+        $this->homeGames = new ArrayCollection();
+        $this->awayGames = new ArrayCollection();
     }
 
     public function getFullname()
