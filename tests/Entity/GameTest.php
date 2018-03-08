@@ -10,7 +10,8 @@ use Torakel\DatabaseBundle\Entity\GameTeamStatistic as GameTeamStatistic;
 use Torakel\DatabaseBundle\Entity\Goal as Goal;
 use Torakel\DatabaseBundle\Entity\Ground as Ground;
 use Torakel\DatabaseBundle\Entity\Matchday as Matchday;
-
+use Torakel\DatabaseBundle\Entity\Substitution as Substitution;
+use Torakel\DatabaseBundle\Entity\Team as Team;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class GameTest extends BaseTest
@@ -76,6 +77,54 @@ class GameTest extends BaseTest
         $this->object->setCoachAway($coachAwayMock);
         $this->assertEquals($coachAwayMock, $this->object->getCoachAway());
 
+        $teamHomeMock = $this->getMockBuilder(Team::class)->getMock();
+        $this->object->setTeamHome($teamHomeMock);
+        $this->assertEquals($teamHomeMock, $this->object->getTeamHome());
+
+        $teamAwayMock = $this->getMockBuilder(Team::class)->getMock();
+        $this->object->setTeamAway($teamAwayMock);
+        $this->assertEquals($teamAwayMock, $this->object->getTeamAway());
+
+        $scoreHomeHalftime = 1;
+        $this->object->setScoreHomeHalftime($scoreHomeHalftime);
+        $this->assertEquals($scoreHomeHalftime, $this->object->getScoreHomeHalftime());
+
+        $scoreHomeFulltime = 2;
+        $this->object->setScoreHomeFulltime($scoreHomeFulltime);
+        $this->assertEquals($scoreHomeFulltime, $this->object->getScoreHomeFulltime());
+
+        $scoreHomeExtratime = 3;
+        $this->object->setScoreHomeExtratime($scoreHomeExtratime);
+        $this->assertEquals($scoreHomeExtratime, $this->object->getScoreHomeExtratime());
+
+        $scoreHomePenalties = 8;
+        $this->object->setScoreHomePenalties($scoreHomePenalties);
+        $this->assertEquals($scoreHomePenalties, $this->object->getScoreHomePenalties());
+
+        $scoreAwayHalftime = 4;
+        $this->object->setScoreAwayHalftime($scoreAwayHalftime);
+        $this->assertEquals($scoreAwayHalftime, $this->object->getScoreAwayHalftime());
+
+        $scoreAwayFulltime = 5;
+        $this->object->setScoreAwayFulltime($scoreAwayFulltime);
+        $this->assertEquals($scoreAwayFulltime, $this->object->getScoreAwayFulltime());
+
+        $scoreAwayExtratime = 6;
+        $this->object->setScoreAwayExtratime($scoreAwayExtratime);
+        $this->assertEquals($scoreAwayExtratime, $this->object->getScoreAwayExtratime());
+
+        $scoreAwayPenalties = 7;
+        $this->object->setScoreAwayPenalties($scoreAwayPenalties);
+        $this->assertEquals($scoreAwayPenalties, $this->object->getScoreAwayPenalties());
+
+        $audience = 9000;
+        $this->object->setAudience($audience);
+        $this->assertEquals($audience, $this->object->getAudience());
+
+        $resultCalculated = true;
+        $this->object->setResultCalculated($resultCalculated);
+        $this->assertEquals($resultCalculated, $this->object->getResultCalculated());
+
         $gamePlayer1 = $this->getMockBuilder(GamePlayer::class)->getMock();
         $gamePlayer2 = $this->getMockBuilder(GamePlayer::class)->getMock();
         $gamePlayer3 = $this->getMockBuilder(GamePlayer::class)->getMock();
@@ -135,6 +184,18 @@ class GameTest extends BaseTest
         $this->object->addCard($card3);
         $this->object->removeCard($card3);
         $this->assertEquals($cards, $this->object->getCards());
+
+        $substitution1 = $this->getMockBuilder(Substitution::class)->getMock();
+        $substitution2 = $this->getMockBuilder(Substitution::class)->getMock();
+        $substitution3 = $this->getMockBuilder(Substitution::class)->getMock();
+        $substitutions = new ArrayCollection();
+        $substitutions[] = $substitution1;
+        $substitutions[] = $substitution2;
+        $this->object->addSubstitution($substitution1);
+        $this->object->addSubstitution($substitution2);
+        $this->object->addSubstitution($substitution3);
+        $this->object->removeSubstitution($substitution3);
+        $this->assertEquals($substitutions, $this->object->getSubstitutions());
 
     }
 }
