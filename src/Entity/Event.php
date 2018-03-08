@@ -33,6 +33,12 @@ class Event
     protected $name;
 
     /**
+     * @var string
+     * @ORM\Column(name="alt_names", type="text", nullable=true)
+     */
+    protected $altNames;
+
+    /**
      * @var \Torakel\DatabaseBundle\Entity\Competition
      * @ORM\ManyToOne(targetEntity="\Torakel\DatabaseBundle\Entity\Competition", inversedBy="events")
      * @ORM\JoinColumn(name="competition_id", referencedColumnName="id")
@@ -131,15 +137,31 @@ class Event
     }
 
     /**
+     * Add alt(ernative) name
+     *
+     * Adds an alternative name to the entity. For example external IDs.
+     *
+     * @param $name
+     */
+    public function addAltName($name)
+    {
+        $names = $this->getAltNames();
+        if (in_array($name, $names) == false) {
+            $names[] = $name;
+            $this->setAltNames($names);
+        }
+    }
+
+    /**
      * Set altNames
      *
-     * @param string $altNames
+     * @param array $altNames
      *
-     * @return Event
+     * @return Player
      */
     public function setAltNames($altNames)
     {
-        $this->altNames = $altNames;
+        $this->altNames = implode('|', $altNames);
 
         return $this;
     }
@@ -147,11 +169,11 @@ class Event
     /**
      * Get altNames
      *
-     * @return string
+     * @return array
      */
     public function getAltNames()
     {
-        return $this->altNames;
+        return explode('|', $this->altNames);
     }
 
     /**
