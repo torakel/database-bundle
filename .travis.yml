@@ -7,8 +7,8 @@ php:
   - 7.2
 
 env:
-  - SURGE_LOGIN=nils.abegg@gmail.com
-  - SURGE_TOKEN=bef99a7c55eb0d3883fadbc9c8e1aa98
+  - SURGE_LOGIN=nils.abegg@gmail.com SURGE_TOKEN=bef99a7c55eb0d3883fadbc9c8e1aa98
+
 install:
   - composer install
   - ./vendor/bin/simple-phpunit install
