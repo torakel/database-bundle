@@ -3,7 +3,7 @@ namespace Torakel\DatabaseBundle\Tests;
 
 use PHPUnit\Framework\TestCase;
 
-class Test extends TestCase
+abstract class BaseTest extends TestCase
 {
 
     protected $object;
