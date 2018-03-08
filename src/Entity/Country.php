@@ -33,7 +33,7 @@ class Country
 
     /**
      * @var string
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(name="alt_names", type="text", nullable=true)
      */
     protected $altNames;
 
@@ -81,7 +81,8 @@ class Country
     protected $updatedAt;
 
     public function __construct() {
-        $this->coachs= new ArrayCollection();
+        $this->coaches= new ArrayCollection();
+        $this->competitions= new ArrayCollection();
         $this->cities= new ArrayCollection();
         $this->referees = new ArrayCollection();
     }
@@ -391,7 +392,7 @@ class Country
      */
     public function addCoach(\Torakel\DatabaseBundle\Entity\Coach $coach)
     {
-        $this->coachs[] = $coach;
+        $this->coaches[] = $coach;
 
         return $this;
     }
@@ -402,7 +403,7 @@ class Country
      */
     public function removeCoach(\Torakel\DatabaseBundle\Entity\Coach $coach)
     {
-        $this->coachs->removeElement($coach);
+        $this->coaches->removeElement($coach);
     }
 
 }
