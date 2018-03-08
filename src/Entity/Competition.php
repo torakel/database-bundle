@@ -136,15 +136,31 @@ class Competition
     }
 
     /**
+     * Add alt(ernative) name
+     *
+     * Adds an alternative name to the entity. For example external IDs.
+     *
+     * @param $name
+     */
+    public function addAltName($name)
+    {
+        $names = $this->getAltNames();
+        if (in_array($name, $names) == false) {
+            $names[] = $name;
+            $this->setAltNames($names);
+        }
+    }
+
+    /**
      * Set altNames
      *
-     * @param string $altNames
+     * @param array $altNames
      *
      * @return Competition
      */
     public function setAltNames($altNames)
     {
-        $this->altNames = $altNames;
+        $this->altNames = implode('|', $altNames);
 
         return $this;
     }
@@ -152,11 +168,11 @@ class Competition
     /**
      * Get altNames
      *
-     * @return string
+     * @return array
      */
     public function getAltNames()
     {
-        return $this->altNames;
+        return explode('|', $this->altNames);
     }
 
     /**

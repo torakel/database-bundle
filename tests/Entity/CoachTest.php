@@ -36,6 +36,12 @@ class CoachTest extends BaseTest
         $this->object->setNickname($nickname);
         $this->assertEquals($nickname, $this->object->getNickname());
 
+        $fullname = $firstname . ' ' . $lastname;
+        $this->assertEquals($fullname, $this->object->getFullname());
+
+        $this->object->setFirstname(null);
+        $this->assertEquals($lastname, $this->object->getFullname());
+
         $countryMock = $this->getMockBuilder(Country::class)->getMock();
         $this->object->setNationality($countryMock);
         $this->assertEquals($countryMock, $this->object->getNationality());
