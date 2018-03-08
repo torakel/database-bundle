@@ -35,6 +35,12 @@ class Goal
 
     /**
      * @var string
+     * @ORM\Column(type="integer", nullable="true")
+     */
+    protected $minuteExtratime;
+
+    /**
+     * @var string
      * @ORM\Column(type="integer")
      */
     protected $period;
@@ -109,11 +115,11 @@ class Goal
     /**
      * Set minute
      *
-     * @param integer $minute
+     * @param $minute
      *
      * @return Goal
      */
-    public function setMinute($minute)
+    public function setMinute(int $minute)
     {
         $this->minute = $minute;
 
@@ -133,11 +139,11 @@ class Goal
     /**
      * Set minuteExtratime
      *
-     * @param integer $minuteExtratime
+     * @param $minuteExtratime
      *
      * @return Goal
      */
-    public function setMinuteExtratime($minuteExtratime)
+    public function setMinuteExtratime(int $minuteExtratime)
     {
         $this->minuteExtratime = $minuteExtratime;
 
@@ -317,11 +323,11 @@ class Goal
     /**
      * Set period
      *
-     * @param integer $period
+     * @param $period
      *
      * @return Goal
      */
-    public function setPeriod($period)
+    public function setPeriod(int $period)
     {
         $this->period = $period;
 

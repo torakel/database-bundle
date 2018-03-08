@@ -35,6 +35,12 @@ class Card
 
     /**
      * @var string
+     * @ORM\Column(type="integer", nullable="true")
+     */
+    protected $minuteExtratime;
+
+    /**
+     * @var string
      * @ORM\Column(type="integer")
      */
     protected $period;
@@ -97,11 +103,11 @@ class Card
     /**
      * Set minute
      *
-     * @param integer $minute
+     * @param $minute
      *
      * @return Card
      */
-    public function setMinute($minute)
+    public function setMinute(int $minute)
     {
         $this->minute = $minute;
 
@@ -121,11 +127,11 @@ class Card
     /**
      * Set minuteExtratime
      *
-     * @param integer $minuteExtratime
+     * @param $minuteExtratime
      *
      * @return Card
      */
-    public function setMinuteExtratime($minuteExtratime)
+    public function setMinuteExtratime(int $minuteExtratime)
     {
         $this->minuteExtratime = $minuteExtratime;
 
@@ -281,11 +287,11 @@ class Card
     /**
      * Set period
      *
-     * @param integer $period
+     * @param $period
      *
      * @return Card
      */
-    public function setPeriod($period)
+    public function setPeriod(int $period)
     {
         $this->period = $period;
 
