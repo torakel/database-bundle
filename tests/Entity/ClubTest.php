@@ -29,6 +29,10 @@ class ClubTest extends BaseTest
     public function testGetterAndSetter()
     {
 
+        $name = 'name1';
+        $this->object->setName($name);
+        $this->assertEquals($name, $this->object->getName());
+
         $internationalName = 'intName';
         $this->object->setInternationalName($internationalName);
         $this->assertEquals($internationalName, $this->object->getInternationalName());

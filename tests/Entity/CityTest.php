@@ -27,6 +27,10 @@ class CityTest extends BaseTest
     public function testGetterAndSetter()
     {
 
+        $name = 'name1';
+        $this->object->setName($name);
+        $this->assertEquals($name, $this->object->getName());
+
         $countryMock = $this->getMockBuilder(Country::class)->getMock();
         $this->object->setCountry($countryMock);
         $this->assertEquals($countryMock, $this->object->getCountry());

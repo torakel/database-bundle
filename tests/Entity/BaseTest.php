@@ -22,10 +22,6 @@ abstract class BaseTest extends TestCase
         $this->object->setSlug($slug);
         $this->assertEquals($slug, $this->object->getSlug());
 
-        $name = 'name1';
-        $this->object->setName($name);
-        $this->assertEquals($name, $this->object->getName());
-
         $altNames = array(
             'altname1',
             'altname2'
