@@ -35,7 +35,7 @@ class Card
 
     /**
      * @var string
-     * @ORM\Column(type="integer", nullable="true")
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $minuteExtratime;
 
