@@ -33,9 +33,9 @@ class Ground
 
     /**
      * @var string
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(name="alt_names", type="text", nullable=true)
      */
-    protected $alt_names;
+    protected $altNames;
 
     /**
      * @var \Torakel\DatabaseBundle\Entity\City
@@ -170,7 +170,7 @@ class Ground
      */
     public function setAltNames($altNames)
     {
-        $this->alt_names = implode('|', $altNames);
+        $this->altNames = implode('|', $altNames);
 
         return $this;
     }
@@ -182,7 +182,7 @@ class Ground
      */
     public function getAltNames()
     {
-        return explode('|', $this->alt_names);
+        return explode('|', $this->altNames);
     }
 
     /**
