@@ -6,8 +6,9 @@ use Torakel\DatabaseBundle\Entity\Coach as Coach;
 use Torakel\DatabaseBundle\Entity\Country as Country;
 use Torakel\DatabaseBundle\Entity\Game as Game;
 use Doctrine\Common\Collections\ArrayCollection;
+use Torakel\DatabaseBundle\Entity\Referee;
 
-class CoachTest extends BaseTest
+class RefereeTest extends BaseTest
 {
 
     /**
@@ -16,8 +17,8 @@ class CoachTest extends BaseTest
      */
     protected function setUp()
     {
-        $this->object = new Coach();
-        $this->object2 = new Coach();
+        $this->object = new Referee();
+        $this->object2 = new Referee();
     }
 
     /**
@@ -31,16 +32,15 @@ class CoachTest extends BaseTest
         $this->checkAttribute('Firstname', $firstname);
         $this->checkAttribute('Lastname', $lastname);
         $this->checkAttribute('Nickname', 'Hansele');
-
-        $fullname = $firstname . ' ' . $lastname;
+        $title = 'Dr.';
+        $this->checkAttribute('Title', $title);
+        $fullname = $title . ' ' . $firstname . ' ' . $lastname;
         $this->assertEquals($fullname, $this->object->getFullname());
-
         $this->object->setFirstname(null);
         $this->assertEquals($lastname, $this->object->getFullname());
 
         $this->checkOneToMany('Country', 'Nationality');
-        $this->checkManyToOne('Card');
-        $this->checkManyToOne('Game', 'HomeGame', 'HomeGames');
-        $this->checkManyToOne('Game', 'AwayGame', 'AwayGames');
+        $this->checkOneToMany('City');
+        $this->checkManyToOne('Game');
     }
 }

@@ -14,7 +14,7 @@ use Torakel\DatabaseBundle\Entity\Substitution as Substitution;
 use Torakel\DatabaseBundle\Entity\Team as Team;
 use Doctrine\Common\Collections\ArrayCollection;
 
-class GameTest extends BaseTest
+class GamePlayerTest extends BaseTest
 {
 
     /**
@@ -23,8 +23,8 @@ class GameTest extends BaseTest
      */
     protected function setUp()
     {
-        $this->object = new Game();
-        $this->object2 = new Game();
+        $this->object = new GamePlayer();
+        $this->object2 = new GamePlayer();
     }
 
     /**
@@ -34,10 +34,6 @@ class GameTest extends BaseTest
     {
 
         $this->assertNull($this->object->getId());
-
-        $slug = 'slug1';
-        $this->object->setSlug($slug);
-        $this->assertEquals($slug, $this->object->getSlug());
 
         $date = new \DateTime();
         $this->object->setCreatedAt($date);
@@ -58,31 +54,12 @@ class GameTest extends BaseTest
     public function testGetterAndSetter()
     {
 
-        $startTime = new \DateTime();
-        $this->checkAttribute('StartTime', $startTime);
-        $this->checkOneToMany('Matchday');
-        $this->checkOneToMany('Ground');
-        $this->checkOneToMany('Coach', 'CoachHome');
-        $this->checkOneToMany('Coach', 'CoachAway');
-        $this->checkOneToMany('Team', 'TeamHome');
-        $this->checkOneToMany('Team', 'TeamAway');
-        $this->checkOneToMany('Referee');
-        $this->checkAttribute('ScoreHomeHalftime', 1);
-        $this->checkAttribute('ScoreHomeFulltime', 2);
-        $this->checkAttribute('ScoreHomeExtratime', 3);
-        $this->checkAttribute('ScoreHomePenalties', 4);
-        $this->checkAttribute('ScoreAwayHalftime', 5);
-        $this->checkAttribute('ScoreAwayFulltime', 6);
-        $this->checkAttribute('ScoreAwayExtratime', 7);
-        $this->checkAttribute('ScoreAwayPenalties', 8);
-        $this->checkAttribute('Audience', 100000);
-        $this->checkAttribute('ResultCalculated', true);
-        $this->checkManyToOne('GamePlayer');
-        $this->checkManyToOne('GamePlayerStatistic');
-        $this->checkManyToOne('GameTeamStatistic');
-        $this->checkManyToOne('Goal');
-        $this->checkManyToOne('Card');
-        $this->checkManyToOne('Substitution');
+        $this->checkOneToMany('Game');
+        $this->checkOneToMany('Player');
+        $this->checkOneToMany('Team');
+        $this->checkAttribute('Number', 1);
+        $this->checkAttribute('Position', 'Goalkeeper');
+        $this->checkAttribute('Status', 'Captain');
 
     }
 }

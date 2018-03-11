@@ -26,28 +26,9 @@ class EventTest extends BaseTest
     public function testGetterAndSetter()
     {
 
-        $name = 'name1';
-        $this->object->setName($name);
-        $this->assertEquals($name, $this->object->getName());
-
-        $competitionMock = $this->getMockBuilder(Competition::class)->getMock();
-        $this->object->setCompetition($competitionMock);
-        $this->assertEquals($competitionMock, $this->object->getCompetition());
-
-        $seasonMock = $this->getMockBuilder(Season::class)->getMock();
-        $this->object->setSeason($seasonMock);
-        $this->assertEquals($seasonMock, $this->object->getSeason());
-
-        $round1 = $this->getMockBuilder(Round::class)->getMock();
-        $round2 = $this->getMockBuilder(Round::class)->getMock();
-        $round3 = $this->getMockBuilder(Round::class)->getMock();
-        $rounds = new ArrayCollection();
-        $rounds[] = $round1;
-        $rounds[] = $round2;
-        $this->object->addRound($round1);
-        $this->object->addRound($round2);
-        $this->object->addRound($round3);
-        $this->object->removeRound($round3);
-        $this->assertEquals($rounds, $this->object->getRounds());
+        $this->checkAttribute('Name', 'name1');
+        $this->checkOneToMany('Competition');
+        $this->checkOneToMany('Season');
+        $this->checkManyToOne('Round');
     }
 }

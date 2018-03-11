@@ -47,44 +47,17 @@ class GoalTest extends BaseTest
     public function testGetterAndSetter()
     {
 
-        $minute = 32;
-        $this->object->setMinute($minute);
-        $this->assertEquals($minute, $this->object->getMinute());
+        $this->checkAttribute('Minute', 32);
+        $this->checkAttribute('MinuteExtratime', 33);
+        $this->checkAttribute('Type', 'red');
+        $this->checkAttribute('Period', 1);
+        $this->checkAttribute('Notice', 'bla bla');
+        $this->checkAttribute('Passing', 'short');
+        $this->checkAttribute('AttemptPosition', 'corner');
+        $this->checkOneToMany('Player', 'AssistPlayer');
+        $this->checkOneToMany('Team');
+        $this->checkOneToMany('Player');
+        $this->checkOneToMany('Game');
 
-        $type = 'red';
-        $this->object->setType($type);
-        $this->assertEquals($type, $this->object->getType());
-
-        $period = 1;
-        $this->object->setPeriod($period);
-        $this->assertEquals($period, $this->object->getPeriod());
-
-        $notice = 'bla bla';
-        $this->object->setNotice($notice);
-        $this->assertEquals($notice, $this->object->getNotice());
-
-        $passing = 'echt jetzt';
-        $this->object->setPassing($passing);
-        $this->assertEquals($passing, $this->object->getPassing());
-
-        $attemptPosition = 'strafraum';
-        $this->object->setAttemptPosition($attemptPosition);
-        $this->assertEquals($attemptPosition, $this->object->getAttemptPosition());
-
-        $assistPlayerMock = $this->getMockBuilder(Player::class)->getMock();
-        $this->object->setAssistPlayer($assistPlayerMock);
-        $this->assertEquals($assistPlayerMock, $this->object->getAssistPlayer());
-
-        $teamMock = $this->getMockBuilder(Team::class)->getMock();
-        $this->object->setTeam($teamMock);
-        $this->assertEquals($teamMock, $this->object->getTeam());
-
-        $playerMock = $this->getMockBuilder(Player::class)->getMock();
-        $this->object->setPlayer($playerMock);
-        $this->assertEquals($playerMock, $this->object->getPlayer());
-
-        $gameMock = $this->getMockBuilder(Game::class)->getMock();
-        $this->object->setGame($gameMock);
-        $this->assertEquals($gameMock, $this->object->getGame());
     }
 }

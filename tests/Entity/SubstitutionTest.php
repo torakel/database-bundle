@@ -1,14 +1,14 @@
 <?php
 namespace Torakel\DatabaseBundle\Tests;
 
-use Torakel\DatabaseBundle\Entity\Card as Card;
-use Torakel\DatabaseBundle\Entity\Coach as Coach;
 use Torakel\DatabaseBundle\Entity\Game as Game;
+use Torakel\DatabaseBundle\Entity\Goal as Goal;
 use Torakel\DatabaseBundle\Entity\Player as Player;
+use Torakel\DatabaseBundle\Entity\Substitution;
 use Torakel\DatabaseBundle\Entity\Team as Team;
 use Doctrine\Common\Collections\ArrayCollection;
 
-class CardTest extends BaseTest
+class SubstitutionTest extends BaseTest
 {
 
     /**
@@ -17,8 +17,8 @@ class CardTest extends BaseTest
      */
     protected function setUp()
     {
-        $this->object = new Card();
-        $this->object2 = new Card();
+        $this->object = new Substitution();
+        $this->object2 = new Substitution();
     }
 
     /**
@@ -49,13 +49,13 @@ class CardTest extends BaseTest
     {
 
         $this->checkAttribute('Minute', 32);
-        $this->checkAttribute('MinuteExtratime', 33);
-        $this->checkAttribute('Type', 'red');
+        $this->checkAttribute('Number', 33);
+        $this->checkAttribute('Position', 'red');
         $this->checkAttribute('Period', 1);
         $this->checkAttribute('Notice', 'bla bla');
-        $this->checkOneToMany('Coach');
+        $this->checkOneToMany('Player', 'IntoPlayer');
         $this->checkOneToMany('Team');
-        $this->checkOneToMany('Player');
+        $this->checkOneToMany('Player', 'OutPlayer');
         $this->checkOneToMany('Game');
 
     }

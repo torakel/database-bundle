@@ -67,7 +67,7 @@ class Referee
      * @var string
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $alt_names;
+    protected $altNames;
 
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection;
@@ -241,7 +241,7 @@ class Referee
      */
     public function setAltNames($altNames)
     {
-        $this->alt_names = implode('|', $altNames);
+        $this->altNames = implode('|', $altNames);
 
         return $this;
     }
@@ -253,7 +253,7 @@ class Referee
      */
     public function getAltNames()
     {
-        return explode('|', $this->alt_names);
+        return explode('|', $this->altNames);
     }
 
     /**

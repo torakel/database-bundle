@@ -6,8 +6,9 @@ use Torakel\DatabaseBundle\Entity\Coach as Coach;
 use Torakel\DatabaseBundle\Entity\Country as Country;
 use Torakel\DatabaseBundle\Entity\Game as Game;
 use Doctrine\Common\Collections\ArrayCollection;
+use Torakel\DatabaseBundle\Entity\Player;
 
-class CoachTest extends BaseTest
+class PlayerTest extends BaseTest
 {
 
     /**
@@ -16,8 +17,8 @@ class CoachTest extends BaseTest
      */
     protected function setUp()
     {
-        $this->object = new Coach();
-        $this->object2 = new Coach();
+        $this->object = new Player();
+        $this->object2 = new Player();
     }
 
     /**
@@ -39,8 +40,12 @@ class CoachTest extends BaseTest
         $this->assertEquals($lastname, $this->object->getFullname());
 
         $this->checkOneToMany('Country', 'Nationality');
+        $this->checkManyToOne('Goal');
+        $this->checkManyToOne('Goal', 'Assist', 'Assists');
         $this->checkManyToOne('Card');
-        $this->checkManyToOne('Game', 'HomeGame', 'HomeGames');
-        $this->checkManyToOne('Game', 'AwayGame', 'AwayGames');
+        $this->checkManyToOne('GamePlayer');
+        $this->checkManyToOne('GamePlayerStatistic');
+        $this->checkManyToOne('Substitution', 'IntoSubstitution');
+        $this->checkManyToOne('Substitution', 'OutSubstitution');
     }
 }

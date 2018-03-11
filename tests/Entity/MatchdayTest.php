@@ -1,14 +1,15 @@
 <?php
 namespace Torakel\DatabaseBundle\Tests;
 
-use Torakel\DatabaseBundle\Entity\Card as Card;
-use Torakel\DatabaseBundle\Entity\Coach as Coach;
-use Torakel\DatabaseBundle\Entity\Game as Game;
-use Torakel\DatabaseBundle\Entity\Player as Player;
-use Torakel\DatabaseBundle\Entity\Team as Team;
+use Torakel\DatabaseBundle\Entity\Competition as Competition;
+use Torakel\DatabaseBundle\Entity\Event as Event;
+use Torakel\DatabaseBundle\Entity\Group;
+use Torakel\DatabaseBundle\Entity\Matchday;
+use Torakel\DatabaseBundle\Entity\Round as Round;
+use Torakel\DatabaseBundle\Entity\Season as Season;
 use Doctrine\Common\Collections\ArrayCollection;
 
-class CardTest extends BaseTest
+class MatchdayTest extends BaseTest
 {
 
     /**
@@ -17,8 +18,8 @@ class CardTest extends BaseTest
      */
     protected function setUp()
     {
-        $this->object = new Card();
-        $this->object2 = new Card();
+        $this->object = new Matchday();
+        $this->object2 = new Matchday();
     }
 
     /**
@@ -29,6 +30,7 @@ class CardTest extends BaseTest
 
         $this->assertNull($this->object->getId());
 
+        $this->checkAttribute('Slug', 'slug1');
         $date = new \DateTime();
         $this->object->setCreatedAt($date);
         $this->assertEquals($date, $this->object->getCreatedAt());
@@ -48,15 +50,11 @@ class CardTest extends BaseTest
     public function testGetterAndSetter()
     {
 
-        $this->checkAttribute('Minute', 32);
-        $this->checkAttribute('MinuteExtratime', 33);
-        $this->checkAttribute('Type', 'red');
-        $this->checkAttribute('Period', 1);
-        $this->checkAttribute('Notice', 'bla bla');
-        $this->checkOneToMany('Coach');
-        $this->checkOneToMany('Team');
-        $this->checkOneToMany('Player');
-        $this->checkOneToMany('Game');
-
+        $this->checkAttribute('Name', 'name1');
+        $this->checkAttribute('Position', 3);
+        $this->checkOneToMany('Round');
+        $this->checkOneToMany('Group');
+        $this->checkOneToMany('MatchdayTable');
+        $this->checkManyToOne('Game');
     }
 }

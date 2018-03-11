@@ -47,7 +47,7 @@ class Player
      * @var string
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $alt_names;
+    protected $altNames;
 
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection;
@@ -92,6 +92,13 @@ class Player
     protected $outSubstitutions;
 
     /**
+     * @var \Torakel\DatabaseBundle\Entity\Country
+     * @ORM\ManyToOne(targetEntity="\Torakel\DatabaseBundle\Entity\Country", inversedBy="coaches")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     */
+    protected $nationality;
+
+    /**
      * @var \DateTime
      * @ORM\Column(type="datetime", name="created_at")
      */
@@ -112,6 +119,7 @@ class Player
         $this->cards = new \Doctrine\Common\Collections\ArrayCollection();
         $this->assists = new \Doctrine\Common\Collections\ArrayCollection();
         $this->gamePlayers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->gamePlayerStatistics = new \Doctrine\Common\Collections\ArrayCollection();
         $this->intoSubstitutions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->outSubstitutions = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -202,30 +210,6 @@ class Player
     }
 
     /**
-     * Set surname
-     *
-     * @param string $surname
-     *
-     * @return Player
-     */
-    public function setSurname($surname)
-    {
-        $this->surname = $surname;
-
-        return $this;
-    }
-
-    /**
-     * Get surname
-     *
-     * @return string
-     */
-    public function getSurname()
-    {
-        return $this->surname;
-    }
-
-    /**
      * Set nickname
      *
      * @param string $nickname
@@ -258,7 +242,7 @@ class Player
      */
     public function setAltNames($altNames)
     {
-        $this->alt_names = implode('|', $altNames);
+        $this->altNames = implode('|', $altNames);
 
         return $this;
     }
@@ -270,7 +254,7 @@ class Player
      */
     public function getAltNames()
     {
-        return explode('|', $this->alt_names);
+        return explode('|', $this->altNames);
     }
 
     /**
@@ -600,5 +584,21 @@ class Player
     public function getGamePlayerStatistics()
     {
         return $this->gamePlayerStatistics;
+    }
+
+    /**
+     * @return Country
+     */
+    public function getNationality()
+    {
+        return $this->nationality;
+    }
+
+    /**
+     * @param Country $nationality
+     */
+    public function setNationality($nationality)
+    {
+        $this->nationality = $nationality;
     }
 }

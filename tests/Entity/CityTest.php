@@ -27,48 +27,11 @@ class CityTest extends BaseTest
     public function testGetterAndSetter()
     {
 
-        $name = 'name1';
-        $this->object->setName($name);
-        $this->assertEquals($name, $this->object->getName());
+        $this->checkAttribute('Name', 'name1');
+        $this->checkOneToMany('Country');
+        $this->checkManyToOne('Club');
+        $this->checkManyToOne('Ground');
+        $this->checkManyToOne('Referee');
 
-        $countryMock = $this->getMockBuilder(Country::class)->getMock();
-        $this->object->setCountry($countryMock);
-        $this->assertEquals($countryMock, $this->object->getCountry());
-
-        $club1 = $this->getMockBuilder(Club::class)->getMock();
-        $club2 = $this->getMockBuilder(Club::class)->getMock();
-        $club3 = $this->getMockBuilder(Club::class)->getMock();
-        $clubs = new ArrayCollection();
-        $clubs[] = $club1;
-        $clubs[] = $club2;
-        $this->object->addClub($club1);
-        $this->object->addClub($club2);
-        $this->object->addClub($club3);
-        $this->object->removeClub($club3);
-        $this->assertEquals($clubs, $this->object->getClubs());
-
-        $ground1 = $this->getMockBuilder(Ground::class)->getMock();
-        $ground2 = $this->getMockBuilder(Ground::class)->getMock();
-        $ground3 = $this->getMockBuilder(Ground::class)->getMock();
-        $grounds = new ArrayCollection();
-        $grounds[] = $ground1;
-        $grounds[] = $ground2;
-        $this->object->addGround($ground1);
-        $this->object->addGround($ground2);
-        $this->object->addGround($ground3);
-        $this->object->removeGround($ground3);
-        $this->assertEquals($grounds, $this->object->getGrounds());
-
-        $referee1 = $this->getMockBuilder(Referee::class)->getMock();
-        $referee2 = $this->getMockBuilder(Referee::class)->getMock();
-        $referee3 = $this->getMockBuilder(Referee::class)->getMock();
-        $referees = new ArrayCollection();
-        $referees[] = $referee1;
-        $referees[] = $referee2;
-        $this->object->addReferee($referee1);
-        $this->object->addReferee($referee2);
-        $this->object->addReferee($referee3);
-        $this->object->removeReferee($referee3);
-        $this->assertEquals($referees, $this->object->getReferees());
     }
 }

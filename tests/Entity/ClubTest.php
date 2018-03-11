@@ -29,33 +29,11 @@ class ClubTest extends BaseTest
     public function testGetterAndSetter()
     {
 
-        $name = 'name1';
-        $this->object->setName($name);
-        $this->assertEquals($name, $this->object->getName());
-
-        $internationalName = 'intName';
-        $this->object->setInternationalName($internationalName);
-        $this->assertEquals($internationalName, $this->object->getInternationalName());
-
-        $shortName = 'shortName';
-        $this->object->setShortName($shortName);
-        $this->assertEquals($shortName, $this->object->getShortName());
-
-        $cityMock = $this->getMockBuilder(City::class)->getMock();
-        $this->object->setCity($cityMock);
-        $this->assertEquals($cityMock, $this->object->getCity());
-
-        $team1 = $this->getMockBuilder(Team::class)->getMock();
-        $team2 = $this->getMockBuilder(Team::class)->getMock();
-        $team3 = $this->getMockBuilder(Team::class)->getMock();
-        $teams = new ArrayCollection();
-        $teams[] = $team1;
-        $teams[] = $team2;
-        $this->object->addTeam($team1);
-        $this->object->addTeam($team2);
-        $this->object->addTeam($team3);
-        $this->object->removeTeam($team3);
-        $this->assertEquals($teams, $this->object->getTeams());
+        $this->checkAttribute('Name', 'name1');
+        $this->checkAttribute('InternationalName', 'intName');
+        $this->checkAttribute('ShortName', 'SN');
+        $this->checkOneToMany('City');
+        $this->checkManyToOne('Team');
 
     }
 }

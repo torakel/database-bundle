@@ -23,29 +23,35 @@ abstract class BaseTest extends TestCase
         $this->assertEquals($attributeValue, $this->object->{'get' . $attributeName}());
     }
 
-    public function checkOneToMany(string $relationName)
+    public function checkOneToMany(string $relationName, string $attributeName = '')
     {
+        if ($attributeName == '') {
+            $attributeName = $relationName;
+        }
         $mock = $this->getMockBuilder($this->entityNamespace . $relationName)->getMock();
-        $this->object->{'set' . $relationName}($mock);
-        $this->assertEquals($mock, $this->object->{'get' . $relationName}());
+        $this->object->{'set' . $attributeName}($mock);
+        $this->assertEquals($mock, $this->object->{'get' . $attributeName}());
 
     }
 
-    public function checkManyToOne(string $relationName, \string $relationPlurarlName = '')
+    public function checkManyToOne(string $relationName, string $attributeName = '', string $relationPlurarlName = '')
     {
 
+        if ($attributeName == '') {
+            $attributeName = $relationName;
+        }
         $mock1 = $this->getMockBuilder($this->entityNamespace . $relationName)->getMock();
         $mock2 = $this->getMockBuilder($this->entityNamespace . $relationName)->getMock();
         $mock3 = $this->getMockBuilder($this->entityNamespace . $relationName)->getMock();
         $mocks = new ArrayCollection();
         $mocks[] = $mock1;
         $mocks[] = $mock2;
-        $this->object->{'add' . $relationName}($mock1);
-        $this->object->{'add' . $relationName}($mock2);
-        $this->object->{'add' . $relationName}($mock3);
-        $this->object->{'remove' . $relationName}($mock3);
+        $this->object->{'add' . $attributeName}($mock1);
+        $this->object->{'add' . $attributeName}($mock2);
+        $this->object->{'add' . $attributeName}($mock3);
+        $this->object->{'remove' . $attributeName}($mock3);
         if ($relationPlurarlName == '') {
-            $relationPlurarlName = $relationName . 's';
+            $relationPlurarlName = $attributeName . 's';
         }
         $this->assertEquals($mocks, $this->object->{'get' . $relationPlurarlName}());
 

@@ -36,7 +36,7 @@ class Team
      * @var string
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $alt_names;
+    protected $altNames;
 
     /**
      * @var string
@@ -132,6 +132,8 @@ class Team
         $this->awayGames = new \Doctrine\Common\Collections\ArrayCollection();
         $this->goals = new \Doctrine\Common\Collections\ArrayCollection();
         $this->gamePlayers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->gamePlayerStatistics = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->gameTeamStatistics = new \Doctrine\Common\Collections\ArrayCollection();
         $this->substitutions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->cards = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tablePositions = new \Doctrine\Common\Collections\ArrayCollection();
@@ -196,6 +198,22 @@ class Team
     }
 
     /**
+     * Add alt(ernative) name
+     *
+     * Adds an alternative name to the entity. For example external IDs.
+     *
+     * @param $name
+     */
+    public function addAltName($name)
+    {
+        $names = $this->getAltNames();
+        if (in_array($name, $names) === false) {
+            $names[] = $name;
+            $this->setAltNames($names);
+        }
+    }
+
+    /**
      * Set altNames
      *
      * @param array $altNames
@@ -204,7 +222,7 @@ class Team
      */
     public function setAltNames($altNames)
     {
-        $this->alt_names = implode('|', $altNames);
+        $this->altNames = implode('|', $altNames);
 
         return $this;
     }
@@ -216,7 +234,7 @@ class Team
      */
     public function getAltNames()
     {
-        return explode('|', $this->alt_names);
+        return explode('|', $this->altNames);
     }
 
     /**
@@ -420,11 +438,11 @@ class Team
     /**
      * Add card
      *
-     * @param \Torakel\DatabaseBundle\Entity\Goal $card
+     * @param \Torakel\DatabaseBundle\Entity\Card $card
      *
      * @return Team
      */
-    public function addCard(\Torakel\DatabaseBundle\Entity\Goal $card)
+    public function addCard(\Torakel\DatabaseBundle\Entity\Card $card)
     {
         $this->cards[] = $card;
 
@@ -434,9 +452,9 @@ class Team
     /**
      * Remove card
      *
-     * @param \Torakel\DatabaseBundle\Entity\Goal $card
+     * @param \Torakel\DatabaseBundle\Entity\Card $card
      */
-    public function removeCard(\Torakel\DatabaseBundle\Entity\Goal $card)
+    public function removeCard(\Torakel\DatabaseBundle\Entity\Card $card)
     {
         $this->cards->removeElement($card);
     }

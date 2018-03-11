@@ -25,37 +25,12 @@ class GroundTest extends BaseTest
     public function testGetterAndSetter()
     {
 
-        $name = 'name1';
-        $this->object->setName($name);
-        $this->assertEquals($name, $this->object->getName());
-
-        $since = 2001;
-        $this->object->setSince($since);
-        $this->assertEquals($since, $this->object->getSince());
-
-        $capacity = 30101;
-        $this->object->setCapacity($capacity);
-        $this->assertEquals($capacity, $this->object->getCapacity());
-
-        $address = 'Somewhere over the rainbow';
-        $this->object->setAddress($address);
-        $this->assertEquals($address, $this->object->getAddress());
-
-        $cityMock = $this->getMockBuilder(City::class)->getMock();
-        $this->object->setCity($cityMock);
-        $this->assertEquals($cityMock, $this->object->getCity());
-
-        $game1 = $this->getMockBuilder(Game::class)->getMock();
-        $game2 = $this->getMockBuilder(Game::class)->getMock();
-        $game3 = $this->getMockBuilder(Game::class)->getMock();
-        $games = new ArrayCollection();
-        $games[] = $game1;
-        $games[] = $game2;
-        $this->object->addGame($game1);
-        $this->object->addGame($game2);
-        $this->object->addGame($game3);
-        $this->object->removeGame($game3);
-        $this->assertEquals($games, $this->object->getGames());
+        $this->checkAttribute('Name', 'name1');
+        $this->checkAttribute('Since', 2001);
+        $this->checkAttribute('Capacity', 30101);
+        $this->checkAttribute('Address', 'Somewhere over the rainbow');
+        $this->checkOneToMany('City');
+        $this->checkManyToOne('Game');
     }
 
 }

@@ -265,7 +265,7 @@ class GamePlayerStatistic
      * @var integer
      * @ORM\Column(type="integer", name="penalty_saves", nullable=true)
      */
-    protected $PenaltySaves;
+    protected $penaltySaves;
 
     /**
      * @var integer
@@ -1298,7 +1298,7 @@ class GamePlayerStatistic
      */
     public function setPenaltySaves($penaltySaves)
     {
-        $this->PenaltySaves = $penaltySaves;
+        $this->penaltySaves = $penaltySaves;
 
         return $this;
     }
@@ -1310,7 +1310,7 @@ class GamePlayerStatistic
      */
     public function getPenaltySaves()
     {
-        return $this->PenaltySaves;
+        return $this->penaltySaves;
     }
 
     /**
