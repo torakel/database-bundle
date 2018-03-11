@@ -8,6 +8,7 @@ abstract class BaseTest extends TestCase
 {
 
     protected $entityNamespace = '\Torakel\DatabaseBundle\Entity\\';
+
     protected $object;
 
     protected $object2;
@@ -16,13 +17,13 @@ abstract class BaseTest extends TestCase
      * @param $attributeName
      * @param $attributeValue
      */
-    public function checkAttribute(\string $attributeName, $attributeValue)
+    public function checkAttribute(string $attributeName, $attributeValue)
     {
         $this->object->{'set' . $attributeName}($attributeValue);
         $this->assertEquals($attributeValue, $this->object->{'get' . $attributeName}());
     }
 
-    public function checkOneToMany(\string $relationName)
+    public function checkOneToMany(string $relationName)
     {
         $mock = $this->getMockBuilder($this->entityNamespace . $relationName)->getMock();
         $this->object->{'set' . $relationName}($mock);
@@ -30,7 +31,7 @@ abstract class BaseTest extends TestCase
 
     }
 
-    public function checkManyToOne(\string $relationName, \string $relationPlurarlName = '')
+    public function checkManyToOne(string $relationName, \string $relationPlurarlName = '')
     {
 
         $mock1 = $this->getMockBuilder($this->entityNamespace . $relationName)->getMock();
