@@ -22,6 +22,7 @@
   "require-dev": {
     "php-coveralls/php-coveralls": "^2.0",
     "sami/sami": "^4.0",
+    "matthiasnoback/symfony-dependency-injection-test": "^3.0",
     "symfony/phpunit-bridge": "^3.4|^4.0"
   },
   "autoload": {

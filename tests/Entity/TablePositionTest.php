@@ -10,12 +10,12 @@ use Torakel\DatabaseBundle\Entity\GameTeamStatistic as GameTeamStatistic;
 use Torakel\DatabaseBundle\Entity\Goal as Goal;
 use Torakel\DatabaseBundle\Entity\Ground as Ground;
 use Torakel\DatabaseBundle\Entity\Matchday as Matchday;
-use Torakel\DatabaseBundle\Entity\Season;
 use Torakel\DatabaseBundle\Entity\Substitution as Substitution;
+use Torakel\DatabaseBundle\Entity\TablePosition;
 use Torakel\DatabaseBundle\Entity\Team as Team;
 use Doctrine\Common\Collections\ArrayCollection;
 
-class SeasonTest extends BaseTest
+class TablePositionTest extends BaseTest
 {
 
     /**
@@ -24,8 +24,8 @@ class SeasonTest extends BaseTest
      */
     protected function setUp()
     {
-        $this->object = new Season();
-        $this->object2 = new Season();
+        $this->object = new TablePosition();
+        $this->object2 = new TablePosition();
     }
 
     /**
@@ -35,7 +35,7 @@ class SeasonTest extends BaseTest
     {
 
         $this->assertNull($this->object->getId());
-        $this->checkAttribute('Slug', 'slug1');
+
         $date = new \DateTime();
         $this->object->setCreatedAt($date);
         $this->assertEquals($date, $this->object->getCreatedAt());
@@ -55,8 +55,34 @@ class SeasonTest extends BaseTest
     public function testGetterAndSetter()
     {
 
-        $this->checkAttribute('Name', 'name1');
-        $this->checkManyToOne('Event');
+        $this->checkAttribute('Position', 1);
+        $this->checkOneToMany('Team');
+        $this->checkOneToMany('MatchdayTable');
+        $this->checkAttribute('GamesPlayed', 2);
+        $this->checkAttribute('Points', 3);
+        $this->checkAttribute('PointsAway', 4);
+        $this->checkAttribute('PointsHome', 5);
+        $this->checkAttribute('Wins', 6);
+        $this->checkAttribute('WinsAway', 7);
+        $this->checkAttribute('WinsHome', 8);
+        $this->checkAttribute('Losses', 9);
+        $this->checkAttribute('LossesAway', 10);
+        $this->checkAttribute('LossesHome', 11);
+        $this->checkAttribute('Draws', 12);
+        $this->checkAttribute('DrawsAway', 13);
+        $this->checkAttribute('DrawsHome', 14);
+        $this->checkAttribute('Goals', 15);
+        $this->checkAttribute('GoalsAway', 16);
+        $this->checkAttribute('GoalsHome', 17);
+        $this->checkAttribute('GoalsAgainst', 18);
+        $this->checkAttribute('GoalsAgainstAway', 19);
+        $this->checkAttribute('GoalsAgainstHome', 20);
+        $this->checkAttribute('GoalDifference', 21);
+        $this->checkAttribute('GoalDifferenceAway', 22);
+        $this->checkAttribute('GoalDifferenceHome', 23);
 
+        $this->assertEquals(null, $this->object->getId());
+        $objectClone = clone $this->object;
+        $this->assertEquals(null, $objectClone->getId());
     }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace Torakel\DatabaseBundle\Tests;
+namespace Torakel\DatabaseBundle\Tests\Entity;
 
 use Torakel\DatabaseBundle\Entity\Game as Game;
 use Torakel\DatabaseBundle\Entity\Goal as Goal;

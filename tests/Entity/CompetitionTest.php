@@ -1,5 +1,5 @@
 <?php
-namespace Torakel\DatabaseBundle\Tests;
+namespace Torakel\DatabaseBundle\Tests\Entity;
 
 use Torakel\DatabaseBundle\Entity\Continent as Continent;
 use Torakel\DatabaseBundle\Entity\Competition as Competition;

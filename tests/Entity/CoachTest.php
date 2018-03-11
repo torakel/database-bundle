@@ -1,5 +1,5 @@
 <?php
-namespace Torakel\DatabaseBundle\Tests;
+namespace Torakel\DatabaseBundle\Tests\Entity;
 
 use Torakel\DatabaseBundle\Entity\Card as Card;
 use Torakel\DatabaseBundle\Entity\Coach as Coach;

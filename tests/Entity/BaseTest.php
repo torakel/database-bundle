@@ -1,5 +1,5 @@
 <?php
-namespace Torakel\DatabaseBundle\Tests;
+namespace Torakel\DatabaseBundle\Tests\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;

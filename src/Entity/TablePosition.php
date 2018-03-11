@@ -245,30 +245,6 @@ class TablePosition
     }
 
     /**
-     * Set displayPosition
-     *
-     * @param integer $displayPosition
-     *
-     * @return TablePosition
-     */
-    public function setDisplayPosition($displayPosition)
-    {
-        $this->displayPosition = $displayPosition;
-
-        return $this;
-    }
-
-    /**
-     * Get displayPosition
-     *
-     * @return integer
-     */
-    public function getDisplayPosition()
-    {
-        return $this->displayPosition;
-    }
-
-    /**
      * Set position
      *
      * @param string $position
@@ -866,30 +842,6 @@ class TablePosition
     public function getTeam()
     {
         return $this->team;
-    }
-
-    /**
-     * Set table
-     *
-     * @param \Torakel\DatabaseBundle\Entity\Table $table
-     *
-     * @return TablePosition
-     */
-    public function setTable(\Torakel\DatabaseBundle\Entity\Table $table = null)
-    {
-        $this->table = $table;
-
-        return $this;
-    }
-
-    /**
-     * Get table
-     *
-     * @return \Torakel\DatabaseBundle\Entity\Table
-     */
-    public function getTable()
-    {
-        return $this->table;
     }
 
     /**

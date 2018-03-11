@@ -1,5 +1,5 @@
 <?php
-namespace Torakel\DatabaseBundle\Tests;
+namespace Torakel\DatabaseBundle\Tests\Entity;
 
 use Torakel\DatabaseBundle\Entity\Competition as Competition;
 use Torakel\DatabaseBundle\Entity\Event as Event;
