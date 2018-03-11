@@ -1,14 +1,54 @@
 <?php
 namespace Torakel\DatabaseBundle\Tests;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
 
 abstract class BaseTest extends TestCase
 {
 
+    protected $entityNamespace = '\Torakel\DatabaseBundle\Entity\\';
     protected $object;
 
     protected $object2;
+
+    /**
+     * @param $attributeName
+     * @param $attributeValue
+     */
+    public function checkAttribute(\string $attributeName, $attributeValue)
+    {
+        $this->object->{'set' . $attributeName}($attributeValue);
+        $this->assertEquals($attributeValue, $this->object->{'get' . $attributeName}());
+    }
+
+    public function checkOneToMany(\string $relationName)
+    {
+        $mock = $this->getMockBuilder($this->entityNamespace . $relationName)->getMock();
+        $this->object->{'set' . $relationName}($mock);
+        $this->assertEquals($mock, $this->object->{'get' . $relationName}());
+
+    }
+
+    public function checkManyToOne(\string $relationName, \string $relationPlurarlName = '')
+    {
+
+        $mock1 = $this->getMockBuilder($this->entityNamespace . $relationName)->getMock();
+        $mock2 = $this->getMockBuilder($this->entityNamespace . $relationName)->getMock();
+        $mock3 = $this->getMockBuilder($this->entityNamespace . $relationName)->getMock();
+        $mocks = new ArrayCollection();
+        $mocks[] = $mock1;
+        $mocks[] = $mock2;
+        $this->object->{'add' . $relationName}($mock1);
+        $this->object->{'add' . $relationName}($mock2);
+        $this->object->{'add' . $relationName}($mock3);
+        $this->object->{'remove' . $relationName}($mock3);
+        if ($relationPlurarlName == '') {
+            $relationPlurarlName = $relationName . 's';
+        }
+        $this->assertEquals($mocks, $this->object->{'get' . $relationPlurarlName}());
+
+    }
 
     /**
      * Tests the general getters and setters
@@ -18,9 +58,8 @@ abstract class BaseTest extends TestCase
 
         $this->assertNull($this->object->getId());
 
-        $slug = 'slug1';
-        $this->object->setSlug($slug);
-        $this->assertEquals($slug, $this->object->getSlug());
+
+        $this->checkAttribute('Slug', 'slug1');
 
         $altNames = array(
             'altname1',
@@ -34,17 +73,15 @@ abstract class BaseTest extends TestCase
         $this->assertEquals($altNames, $this->object->getAltNames());
 
         $date = new \DateTime();
-        $this->object->setCreatedAt($date);
-        $this->assertEquals($date, $this->object->getCreatedAt());
-        $this->object->setUpdatedAt($date);
-        $this->assertEquals($date, $this->object->getUpdatedAt());
+        $this->checkAttribute('CreatedAt', $date);
+        $this->checkAttribute('UpdatedAt', $date);
 
-        $city = $this->object2;
-        $city->prePersist();
-        $this->assertTrue(is_object($city->getCreatedAt()));
-        $this->assertTrue(array_key_exists(0, $city->getAltNames()));
-        $city->preUpdate();
-        $this->assertTrue(is_object($city->getUpdatedAt()));
+        $object = $this->object2;
+        $object->prePersist();
+        $this->assertTrue(is_object($object->getCreatedAt()));
+        $this->assertTrue(array_key_exists(0, $object->getAltNames()));
+        $object->preUpdate();
+        $this->assertTrue(is_object($object->getUpdatedAt()));
     }
 
 }
