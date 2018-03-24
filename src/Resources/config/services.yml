@@ -1,7 +1,10 @@
 services:
-    torakel.matchday_repository:
-        class: Torakel\DatabaseBundle\Repository\MatchdayRepository
-        factory: ["@doctrine", getRepository]
     torakel.card_repository:
         class: Torakel\DatabaseBundle\Repository\CardRepository
+        factory: ["@doctrine", getRepository]
+    torakel.game_repository:
+        class: Torakel\DatabaseBundle\Repository\GameRepository
+        factory: ["@doctrine", getRepository]
+    torakel.matchday_repository:
+        class: Torakel\DatabaseBundle\Repository\MatchdayRepository
         factory: ["@doctrine", getRepository]

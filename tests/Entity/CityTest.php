@@ -2,11 +2,6 @@
 namespace Torakel\DatabaseBundle\Tests\Entity;
 
 use Torakel\DatabaseBundle\Entity\City as City;
-use Torakel\DatabaseBundle\Entity\Club as Club;
-use Torakel\DatabaseBundle\Entity\Country as Country;
-use Torakel\DatabaseBundle\Entity\Ground as Ground;
-use Torakel\DatabaseBundle\Entity\Referee as Referee;
-use Doctrine\Common\Collections\ArrayCollection;
 
 class CityTest extends BaseTest
 {

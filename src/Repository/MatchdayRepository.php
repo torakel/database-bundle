@@ -4,11 +4,20 @@ namespace Torakel\DatabaseBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 use Torakel\DatabaseBundle\Entity\Matchday;
 
+/**
+ * Class MatchdayRepository
+ *
+ * This class handles all the database queries for the Matchday entity.
+ *
+ * @package Torakel\DatabaseBundle\Repository
+ */
 class MatchdayRepository extends EntityRepository
 {
 
     /**
      * findPreviousMatchdaySameRound
+     *
+     * Returns the previous matchday in the same round of a given matchday.
      *
      * @param Matchday $matchday
      * @return Matchday
@@ -30,11 +39,14 @@ class MatchdayRepository extends EntityRepository
         if (!$previousMatchday) {
             return null;
         }
+
         return array_shift($previousMatchday);
     }
 
     /**
      * findNextMatchdaySameRound
+     *
+     * Returns the next matchday in the same round of a given matchday.
      *
      * @param Matchday $matchday
      * @return Matchday
@@ -57,10 +69,14 @@ class MatchdayRepository extends EntityRepository
     }
 
     /**
+     * findAllMatchdaysOfRoundByMatchday
+     *
+     * Returns all matchdays of a round for a given matchday.
+     *
      * @param Matchday $matchday
      * @return Matchday
      */
-    public function findAllMatchdaysForMatchday(Matchday $matchday)
+    public function findAllMatchdaysOfRoundByMatchday(Matchday $matchday)
     {
         return $this->getEntityManager()
             ->createQuery(

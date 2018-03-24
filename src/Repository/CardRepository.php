@@ -1,8 +1,8 @@
 <?php
 namespace Torakel\DatabaseBundle\Repository;
 
-use Torakel\DatabaseBundleBundle\Entity\Game;
-use Torakel\DatabaseBundleBundle\Entity\Team;
+use Torakel\DatabaseBundle\Entity\Game;
+use Torakel\DatabaseBundle\Entity\Team;
 use Doctrine\ORM\EntityRepository;
 
 /**
